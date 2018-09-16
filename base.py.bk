@@ -1,9 +1,11 @@
 import os
+import time
 from os.path import join, dirname
 from dotenv import load_dotenv
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from bs4 import BeautifulSoup
 
 
 # 環境変数のロード
@@ -15,6 +17,7 @@ base_email_2 = os.getenv('BASE_EMAIL_2')
 base_password_2 = os.getenv('BASE_PASSWORD_2')
 
 # ヘッドレスドライバーの準備
+print('preparing driver...')
 user_agent = 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36'
 pjs_path = 'node_modules/phantomjs/bin/phantomjs'
 dcap = {
@@ -22,9 +25,10 @@ dcap = {
     'marionette' : True
 }
 driver = webdriver.PhantomJS(executable_path=pjs_path, desired_capabilities=dcap)
-WebDriverWait(driver, 1)
+# WebDriverWait(driver, 1)
 
 # BASEのログインページに移動
+print('logging in...')
 login_url = 'https://admin.thebase.in/users/login'
 driver.get(login_url)
 # ログインフォームにアカウント情報を入力
@@ -35,11 +39,20 @@ password_form.send_keys(base_password_1)
 # ログイン情報を入れてボタンを押す
 login_button = driver.find_element_by_xpath("//form[@id='userLoginForm']/button")
 login_button.click()
-WebDriverWait(driver, 3)
 
 # 商品一覧ページへ移動
+print('getting first page')
 items_url = 'https://admin.thebase.in/items'
 driver.get(items_url)
-WebDriverWait(driver, 2)
 
-print(driver.page_source)
+# BS4で対象の商品情報を取得
+soup = BeautifulSoup(driver.page_source.encode('utf-8'))
+items = soup.findAll('li', class_='itemlistSort__list')
+print(items)
+
+# # スクロールして次の商品を取得
+# print('getting next page')
+# driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+# WebDriverWait(driver, 5)
+#
+# driver.save_screenshot('screenshot.png')
