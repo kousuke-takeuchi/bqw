@@ -5,3 +5,5 @@ node_modules
 .png
 *.csv
 *.png
+data
+__pycache__
