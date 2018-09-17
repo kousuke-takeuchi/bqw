@@ -1,0 +1,159 @@
+﻿Item Code,Seller Code,Status,2nd Cat Code,Item Name,Item Description,Short Title,Item Detail Header,Item Detail Footer,Brief Description,Image URL,Sell Price,Sell Qty,Shipping Group No,Item Weight,Option Info,Inventory Info,Maker No,Brand No,Product Model Name,Retail Price,Origin Type,Place of Origin,Industrial Code,Item Condition,Manufacture Date,Adult Product Y/N,A/S Info,Available Date,Gift,Additional Item Image,Inventory Cover Image,Multi Shipping Rate
+123456789,testSellerCode,S2,300000704,test item name,test item detail,short name,item detail header,item detail footer,item description details,http://gd.image-qoo10.jp/li/140/145/420145140.jpg,100,10,185618,1,Test||*No||*0.00||*testSellerCode-AAA$$Test||*Yes||*12.00||*testSellerCode-BBB,Color||*Black||*0||*100||*testSellerCode-CH3200-black$$Color||*Red||*0||*100||*testSellerCode-CH3200-red,0,0,model name,100,2,japan,jancodetest,1,13-Mar,N,,5,123,http://gd.image-qoo10.jp/mi/307/990/422990307.jpg$$http://gd.image-qoo10.jp/mi/905/046/422046905.jpg,664256fd6408.jpg,233982$$228507
+
+
+
+=======================================================[ファイル内容説明]=======================================================
+$ 文字コード : UTF-8(BOMあり)
+$ 登録・更新処理時の共通仕様
+$ 改行文字は入れないこと
+$ 拡張子
+ QSMの場合：xls or csv（区切り文字：コンマ）
+ FTPの場合：csv（区切り文字：コンマ）
+　※ ファイル名に日付（YYYYMMDDHHMMSS）を付けることで処理順番の指定が出来ます。
+　　例)item_20130315121314.csv
+
+$ カラム説明
+0. Item Code
+   - Qoo10商品コード
+
+1. Seller Code
+   - 必須
+   - 販売者商品コード
+   - 最大200文字
+   - 自分の商品の中でユニークでなければならない（商品管理のキー）*
+
+2. Status
+   - 取引待ち : S1
+   - 取引可能 : S2
+   - 取引廃止 : S4
+
+3. 2nd Cat Code
+   - 必須
+   - 小分類カテゴリコードを入力してください。
+
+4. Item Name
+   - 最大100文字
+
+5. Item Description
+   - 商品詳細
+   - 文字制限なし
+
+6. Short Title
+   - 短縮商品名
+   - 最大20文字
+
+7. Item Detail Header
+   - 最大2500文字
+
+8. Item Detail Footer
+   - 最大2500文字
+
+9. Brief Description
+   - 商品説明
+   - 最大100文字
+   - 外部検索サイトでの検索時にキーワードとして利用される
+
+10. Image URL
+   - 基本イメージURL 
+
+11. Sell Price
+   - 数字
+
+12. Sell Qty
+   - 数字
+
+13. Shipping Group No
+   - 数字
+   - nullの場合は「無料」が設定される
+
+14. Item Weight
+   - 数字
+
+15. Option Info
+   - 最大2000文字
+   - 列の区切り文字(||*), 行の区切り文字($$)
+   - オプション名1||*オプション詳細1||*価格1||*オプションコード1$$オプション名1||*オプション詳細2||*価格2||*オプションコード2
+   - 例) 納品書||*不要||*0.00||*testSellerCode-AAA$$商品書||*必要||*12.00||*testSellerCode-BBB
+   - オプションコードは自分の商品の中でユニークでなければならない（オプション管理のキー）
+
+16. Inventory Info
+   - 列の区切り文字(||*), 行の区切り文字($$)
+   - 在庫コードは自分の商品の中でユニークでなければならない（在庫管理のキー） 
+   - 在庫コード：最大100文字 *
+   
+   （1段階）
+   - 在庫名||*在庫詳細||*価格||*数量||*在庫コード
+   - 例) カラー||*Red||*0||*10||*testSellerCode-red$$カラー||*Blue||*0||*20||*testSellerCode-blue
+   （2段階）
+   - 在庫名1||*在庫詳細1||*在庫名2||*在庫詳細2||*価格||*数量||*在庫コード
+   - 例) カラー||*Red||*サイズ||*S||*0||*10||*testSellerCode-red-s$$カラー||*Red||*サイズ||*M||*0||*11||*testSellerCode-red-m$$カラー||*Red||*サイズ||*L||*0||*12||*testSellerCode-red-l
+   
+
+17. Maker No
+   - 数字
+
+18. Brand No
+   - 数字
+
+19. Product Model Name
+   - 最大60文字
+
+20. Retail Price
+   - 数字
+
+21. Origin Type
+   - 国内 : 1
+   - 海外 : 2
+   - nullの場合は「1」が設定される
+
+22. Place of Origin
+   - 国家名
+   - 最大50文字
+
+23. Industrial Code
+   - 最大50文字
+   - JANコード
+
+24. Item Condition
+   - 数字
+   - 新品 : 1
+   - 中古品 (未使用) : 2
+   - 中古品 (新古品) : 3
+   - 中古品 (ほぼ新品) : 4
+   - 中古品 (状態良好) : 5
+   - 中古品 (少々古め) : 6
+   - 中古品 (使用不可(収集家用)) : 7
+   - nullの場合は「1」が設定される
+
+25. Manufacture Date
+   - YYYY/MM
+
+26. Adult Product Y/N
+   - Y or N
+
+27. A/S Info
+   - 最大50文字
+
+28. Available Date
+   - 数字を入力する場合、商品の準備日となります。 (商品の準備日の入力 ex: 1)
+   - 日時の形式で入力する場合、発売日となります。 (発売日の入力 ex: 2013-09-26)
+   - 入力しない場合はすぐに配送できる一般の商品となります。
+
+29. Gift
+   - おまけ
+   - 最大100文字
+
+30. Additional Item Image
+   - 商品の追加イメージ
+   - 最大 11個のイメージを追加することが可能 
+   - 例 ) http://gd.image-qoo10.jp/mi/307/990/422990307.jpg$$http://gd.image-qoo10.jp/mi/905/046/422046905.jpg
+
+31. Inventory Cover Image
+   - 在庫オプションのメインイメージを登録
+   - 例 ) Color||*Black||*http://gd.image-qoo10.jp/mi/346/504/420504346.jpg$$Size||*100||*http://dp.image-qoo10.jp/SG/GMKT.IMG/brand_logo/2013/04/03/a295245d-0dd7-458d-9126-664256fd6408.jpg
+
+32. Multi Shipping Rate
+   - オプション送料の登録
+   - 最大2個のコード登録機能
+   - 例 ) 233982$$228507

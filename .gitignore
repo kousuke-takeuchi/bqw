@@ -7,3 +7,4 @@ node_modules
 *.png
 data
 __pycache__
+!templates/*.csv
